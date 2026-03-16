@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shifeats - Order Food Online from Restaurants Near You</title>
+    <meta name="description" content="Order food online from restaurants and get it delivered. Serving in Bangalore, Hyderabad, Delhi, Mumbai, Pune and more.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+                        <path d="M25 5L45 15V35L25 45L5 35V15L25 5Z" fill="#FC8019"/>
+                        <path d="M25 15C28.866 15 32 18.134 32 22C32 25.866 28.866 29 25 29C21.134 29 18 25.866 18 22C18 18.134 21.134 15 25 15Z" fill="white"/>
+                    </svg>
+                    <span class="logo-text">Shifeats</span>
+                </div>
+                
+                <nav class="nav">
+                    <div class="location-selector">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2C6.686 2 4 4.686 4 8C4 12.5 10 18 10 18C10 18 16 12.5 16 8C16 4.686 13.314 2 10 2Z" stroke="#3D4152" stroke-width="2"/>
+                            <circle cx="10" cy="8" r="2" fill="#3D4152"/>
+                        </svg>
+                        <div class="location-text">
+                            <span class="location-label">Other</span>
+                            <span class="location-name">Bangalore, Karnataka, India</span>
+                        </div>
+                        <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 12 12">
+                            <path d="M2 4L6 8L10 4" stroke="#FC8019" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    
+                    <ul class="nav-links">
+                        <li><a href="#"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 3h14v2H3V3zm0 6h14v2H3V9zm0 6h14v2H3v-2z" fill="#3D4152"/></svg> Shifeats Corporate</a></li>
+                        <li><a href="#"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M4 4h12v12H4V4z" stroke="#3D4152" stroke-width="2" fill="none"/></svg> Search</a></li>
+                        <li><a href="#" id="signin-link"><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="6" r="3" fill="#3D4152"/><path d="M4 18c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#3D4152" stroke-width="2" fill="none"/></svg> Sign In</a></li>
+                        <li id="track-order-nav" style="display: none;"><a href="#"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z" fill="#3D4152"/></svg> Track Order</a></li>
+                        <li><a href="#" class="cart-link"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 3h2l3 12h8l3-9H6" stroke="#3D4152" stroke-width="2" fill="none"/></svg> Cart <span class="cart-count">0</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Order food & groceries. Discover best restaurants. Shifeats it!</h1>
+                <div class="search-container">
+                    <input type="text" class="location-input" placeholder="Enter your delivery location">
+                    <button class="find-food-btn">FIND FOOD</button>
+                </div>
+                <div class="popular-cities">
+                    <span>POPULAR CITIES IN INDIA</span>
+                    <div class="cities">
+                        <a href="#">Ahmedabad</a>
+                        <a href="#">Bangalore</a>
+                        <a href="#">Chennai</a>
+                        <a href="#">Delhi</a>
+                        <a href="#">Gurgaon</a>
+                        <a href="#">Hyderabad</a>
+                        <a href="#">Kolkata</a>
+                        <a href="#">Mumbai</a>
+                        <a href="#">Pune</a>
+                        <a href="#">& more.</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="hero-image.png" alt="Food delivery" id="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- What's on your mind Section -->
+    <section class="food-categories">
+        <div class="container">
+            <h2 class="section-title">What's on your mind?</h2>
+            <div class="categories-slider">
+                <button class="slider-btn prev-btn">‹</button>
+                <div class="categories-grid" id="categories-grid">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+                <button class="slider-btn next-btn">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top restaurant chains Section -->
+    <section class="top-restaurants">
+        <div class="container">
+            <h2 class="section-title">Top restaurant chains in Bangalore</h2>
+            <div class="restaurants-slider">
+                <button class="slider-btn prev-btn">‹</button>
+                <div class="restaurants-grid" id="top-restaurants-grid">
+                    <!-- Restaurants will be populated by JavaScript -->
+                </div>
+                <button class="slider-btn next-btn">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Restaurants Section -->
+    <section class="all-restaurants">
+        <div class="container">
+            <h2 class="section-title">Restaurants with online food delivery in Bangalore</h2>
+            <div class="filters">
+                <button class="filter-btn active">Filter</button>
+                <button class="filter-btn">Sort By</button>
+                <button class="filter-btn">Fast Delivery</button>
+                <button class="filter-btn">New on Shifeats</button>
+                <button class="filter-btn">Ratings 4.0+</button>
+                <button class="filter-btn">Pure Veg</button>
+                <button class="filter-btn">Offers</button>
+                <button class="filter-btn">Rs. 300-Rs. 600</button>
+                <button class="filter-btn">Less than Rs. 300</button>
+            </div>
+            <div class="restaurants-list" id="all-restaurants-grid">
+                <!-- All restaurants will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>Shifeats</h3>
+                    <p>© 2024 Shifeats Limited</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Shifeats Corporate</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Shifeats One</a></li>
+                            <li><a href="#">Shifeats Instamart</a></li>
+                            <li><a href="#">Shifeats Genie</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact us</h4>
+                        <ul>
+                            <li><a href="#">Help & Support</a></li>
+                            <li><a href="#">Partner with us</a></li>
+                            <li><a href="#">Ride with us</a></li>
+                        </ul>
+                        <h4 style="margin-top: 2rem;">Legal</h4>
+                        <ul>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Investor Relations</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>We deliver to:</h4>
+                        <ul>
+                            <li><a href="#">Bangalore</a></li>
+                            <li><a href="#">Gurgaon</a></li>
+                            <li><a href="#">Hyderabad</a></li>
+                            <li><a href="#">Delhi</a></li>
+                            <li><a href="#">Mumbai</a></li>
+                            <li><a href="#">Pune</a></li>
+                            <li><a href="#">Kolkata</a></li>
+                            <li><a href="#">Chennai</a></li>
+                            <li><a href="#">Ahmedabad</a></li>
+                            <li><a href="#">Chandigarh</a></li>
+                            <li><a href="#">Jaipur</a></li>
+                            <li><a href="#">Kochi</a></li>
+                            <li><a href="#" class="view-more">View More</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Life at Shifeats</h4>
+                        <ul>
+                            <li><a href="#">Explore with Shifeats</a></li>
+                            <li><a href="#">Shifeats News</a></li>
+                            <li><a href="#">Snackables</a></li>
+                        </ul>
+                        <div class="social-links">
+                            <h4>Social Links</h4>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="currentColor"/></svg>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22 4s-.8.4-1.9.7c-.8-.8-2-1.3-3.3-1.3-2.4 0-4.3 2-4.3 4.5 0 .4 0 .7.1 1-3.6-.2-6.8-2-9-4.7-.4.6-.6 1.4-.6 2.2 0 1.6.8 3 2 3.8-.7 0-1.4-.2-2-.5v.1c0 2.2 1.6 4 3.6 4.4-.4.1-.8.2-1.2.2-.3 0-.6 0-.9-.1.6 2 2.4 3.4 4.6 3.4-1.7 1.3-3.8 2.1-6.1 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.8 2.2 7.5 2.2 9.1 0 14-7.5 14-14v-.6c1-.7 1.8-1.6 2.5-2.5z" fill="currentColor"/></svg>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5M12 7a5 5 0 110 10 5 5 0 010-10m0 2a3 3 0 100 6 3 3 0 000-6z" fill="currentColor"/></svg>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" fill="currentColor"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="app-download">
+                    <h4>For better experience, download the Shifeats app now</h4>
+                    <div class="app-buttons">
+                        <a href="#" class="app-btn">
+                            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/m/play_store.png" alt="Get it on Google Play" id="google-play-img" style="height: 54px; margin-right: 15px;">
+                        </a>
+                        <a href="#" class="app-btn">
+                            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/m/app_store.png" alt="Download on the App Store" id="app-store-img" style="height: 54px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-login">&times;</span>
+            <div class="modal-header">
+                <h2>Login</h2>
+                <p>Enter your details to access your account</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="auth-submit-btn">Login</button>
+            </form>
+            <div class="modal-footer">
+                <p>Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-signup">&times;</span>
+            <div class="modal-header">
+                <h2>Create Account</h2>
+                <p>Join Shifeats to start ordering your favorite food</p>
+            </div>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required placeholder="Min. 8 characters">
+                </div>
+                <button type="submit" class="auth-submit-btn">Sign Up</button>
+            </form>
+            <div class="modal-footer">
+                <p>Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign-up Modal (already added earlier) -->
+
+    <!-- Menu Modal -->
+    <div id="menu-modal" class="modal">
+        <div class="modal-content menu-modal-content">
+            <span class="close-modal" id="close-menu">&times;</span>
+            <div id="menu-header" class="menu-header">
+                <!-- Restaurant info will be populated by JavaScript -->
+            </div>
+            <div id="menu-items-container" class="menu-items-container">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+            <div class="menu-footer">
+                <button id="view-cart-btn" class="auth-submit-btn">View Cart & Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content checkout-modal-content">
+            <span class="close-modal" id="close-checkout">&times;</span>
+            <div class="checkout-stepper">
+                <div class="step active" id="step-1-header">1. Cart</div>
+                <div class="step" id="step-2-header">2. Address</div>
+                <div class="step" id="step-3-header">3. Payment</div>
+            </div>
+
+            <!-- Step 1: Cart Items -->
+            <div id="checkout-step-1" class="checkout-step">
+                <h3>Review Items</h3>
+                <div id="checkout-items-list" class="checkout-items-list">
+                    <!-- Items populated by JS -->
+                </div>
+                <div class="checkout-summary">
+                    <div class="summary-row"><span>Subtotal</span><span id="checkout-subtotal">₹0</span></div>
+                    <div class="summary-row"><span>Delivery Fee</span><span id="checkout-delivery">₹30</span></div>
+                    <div class="summary-row total"><span>Total</span><span id="checkout-total">₹0</span></div>
+                </div>
+                <button class="auth-submit-btn" id="next-to-address">Select Address</button>
+            </div>
+
+            <!-- Step 2: Address -->
+            <div id="checkout-step-2" class="checkout-step" style="display:none;">
+                <h3>Delivery Address</h3>
+                <div class="form-group">
+                    <label>Full Address</label>
+                    <textarea id="checkout-address" placeholder="House No, Building Name, Street, Landmark..." rows="3" class="form-input"></textarea>
+                </div>
+                <div class="checkout-actions">
+                    <button class="back-btn" id="back-to-cart">Back</button>
+                    <button class="auth-submit-btn" id="next-to-payment">Continue to Payment</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Payment -->
+            <div id="checkout-step-3" class="checkout-step" style="display:none;">
+                <h3>Payment Method</h3>
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="Credit Card" checked>
+                        <span>Credit / Debit Card</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="UPI">
+                        <span>UPI (Google Pay, PhonePe)</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="Cash on Delivery">
+                        <span>Cash on Delivery</span>
+                    </label>
+                </div>
+                <div class="checkout-actions">
+                    <button class="back-btn" id="back-to-address">Back</button>
+                    <button class="auth-submit-btn" id="place-order-btn">PLACE ORDER</button>
+                </div>
+            </div>
+            
+            <!-- Success Step -->
+            <div id="checkout-success" class="checkout-step" style="display:none; text-align:center; padding: 2rem 0;">
+                <div class="success-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="30" stroke="#60b246" stroke-width="4"/>
+                        <path d="M18 32l10 10 18-18" stroke="#60b246" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 style="color: #60b246; margin-top: 1rem;">Order Placed!</h2>
+                <p>Your delicious food is being prepared.</p>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 2rem;">
+                    <button class="auth-submit-btn" id="close-success-btn" style="flex: 1;">Continue Shopping</button>
+                    <button class="auth-submit-btn" id="track-latest-order-btn" style="flex: 1; background-color: #3D4152;">Track Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content profile-modal-content">
+            <span class="close-modal" id="close-profile">&times;</span>
+            <div class="modal-header">
+                <h2>My Profile</h2>
+            </div>
+            <div class="profile-tabs" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                <button class="profile-tab active" data-tab="orders" style="flex: 1; padding: 0.5rem; cursor: pointer;">My Orders</button>
+                <button class="profile-tab" data-tab="account" style="flex: 1; padding: 0.5rem; cursor: pointer;">Account</button>
+            </div>
+            <div id="profile-orders" class="profile-tab-content" style="display:block;">
+                <div id="orders-list">
+                    <!-- Orders will be populated here -->
+                </div>
+            </div>
+            <div id="profile-account" class="profile-tab-content" style="display:none; text-align: center;">
+                <button id="logout-btn" class="auth-submit-btn" style="background-color: #f44336; color: white;">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracking Modal -->
+    <div id="tracking-modal" class="modal">
+        <div class="modal-content tracking-modal-content">
+            <span class="close-modal" id="close-tracking">&times;</span>
+            <div class="modal-header">
+                <h2>Track Your Order</h2>
+                <p>Order ID: #<span id="track-order-id"></span></p>
+            </div>
+            <div class="tracking-status" style="display: flex; justify-content: space-between; margin: 2rem 0; font-size: 0.8rem; text-align: center; color: #3D4152;">
+                <div class="status-step completed" style="color: #60b246; font-weight: bold;">&#10003; Placed</div>
+                <div class="status-step completed" style="color: #60b246; font-weight: bold;">&#10003; Preparing</div>
+                <div class="status-step active" style="color: #FC8019; font-weight: bold;">&#10148; On the Way</div>
+                <div class="status-step">Delivered</div>
+            </div>
+            <div class="tracking-map" style="height: 250px; background: #eee; margin-top: 1rem; border-radius: 8px; overflow: hidden; position: relative;">
+                <img src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg" style="width:100%; height:100%; object-fit:cover;" />
+            </div>
+            <p style="text-align: center; margin-top: 15px; font-weight: bold; color: #3D4152;">Delivery Partner is 5 mins away</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

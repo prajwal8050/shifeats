@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Food Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #FC8019;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-card {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        canvas {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #FC8019;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #E67316;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Food Image Generator</h1>
+        <p>Click the button below to generate and download all food images</p>
+        <button onclick="generateAllImages()">Generate All Images</button>
+        <div class="grid" id="imageGrid"></div>
+    </div>
+
+    <script>
+        const foodItems = {
+            // Food Categories
+            'biryani': { emoji: '🍛', bg: '#FFE5B4', color: '#8B4513' },
+            'pizza': { emoji: '🍕', bg: '#FFE4E1', color: '#DC143C' },
+            'burger': { emoji: '🍔', bg: '#FFF8DC', color: '#D2691E' },
+            'chinese': { emoji: '🥡', bg: '#FFE4B5', color: '#FF6347' },
+            'dosa': { emoji: '🥞', bg: '#FFFACD', color: '#DAA520' },
+            'north-indian': { emoji: '🍛', bg: '#FFE4B5', color: '#FF8C00' },
+            'ice-cream': { emoji: '🍦', bg: '#F0E68C', color: '#FF69B4' },
+            'rolls': { emoji: '🌯', bg: '#FFDAB9', color: '#CD853F' },
+            'cakes': { emoji: '🎂', bg: '#FFB6C1', color: '#FF1493' },
+            'pasta': { emoji: '🍝', bg: '#FFEFD5', color: '#FF6347' },
+            'sandwich': { emoji: '🥪', bg: '#F5DEB3', color: '#8B4513' },
+            'south-indian': { emoji: '🫓', bg: '#FFFACD', color: '#B8860B' },
+
+            // Restaurants
+            'meghana': { emoji: '🍛', bg: '#FFE5B4', color: '#8B4513' },
+            'kfc': { emoji: '🍗', bg: '#DC143C', color: '#FFFFFF' },
+            'dominos': { emoji: '🍕', bg: '#0066CC', color: '#FFFFFF' },
+            'mcdonalds': { emoji: '🍔', bg: '#FFCC00', color: '#DC143C' },
+            'truffles': { emoji: '🍰', bg: '#8B4513', color: '#FFD700' },
+            'empire': { emoji: '🍖', bg: '#8B0000', color: '#FFD700' },
+            'burger-king': { emoji: '🍔', bg: '#EC1C24', color: '#FFFFFF' },
+            'subway': { emoji: '🥪', bg: '#00853D', color: '#FFCC00' },
+            'pizza-hut': { emoji: '🍕', bg: '#EE3124', color: '#FFFFFF' },
+            'taco-bell': { emoji: '🌮', bg: '#702082', color: '#FFFFFF' },
+            'wow-momo': { emoji: '🥟', bg: '#FF6B35', color: '#FFFFFF' },
+            'behrouz': { emoji: '🍛', bg: '#8B4513', color: '#FFD700' },
+            'faasos': { emoji: '🌯', bg: '#E63946', color: '#FFFFFF' },
+            'baskin-robbins': { emoji: '🍦', bg: '#FF69B4', color: '#FFFFFF' },
+            'starbucks': { emoji: '☕', bg: '#00704A', color: '#FFFFFF' },
+            'bowl-company': { emoji: '🥗', bg: '#4CAF50', color: '#FFFFFF' }
+        };
+
+        function createFoodImage(name, data, size = 300) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            // Background
+            ctx.fillStyle = data.bg;
+            ctx.fillRect(0, 0, size, size);
+
+            // Add gradient overlay
+            const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size);
+            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0.1)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+
+            // Emoji
+            ctx.font = `${size * 0.5}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(data.emoji, size / 2, size / 2);
+
+            // Text label
+            ctx.font = `bold ${size * 0.08}px Arial`;
+            ctx.fillStyle = data.color;
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+            ctx.shadowBlur = 4;
+            const displayName = name.replace(/-/g, ' ').toUpperCase();
+            ctx.fillText(displayName, size / 2, size * 0.85);
+
+            return canvas;
+        }
+
+        function generateAllImages() {
+            const grid = document.getElementById('imageGrid');
+            grid.innerHTML = '';
+
+            Object.entries(foodItems).forEach(([name, data]) => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+
+                const canvas = createFoodImage(name, data);
+                card.appendChild(canvas);
+
+                const label = document.createElement('p');
+                label.textContent = name;
+                card.appendChild(label);
+
+                const downloadBtn = document.createElement('button');
+                downloadBtn.textContent = 'Download';
+                downloadBtn.style.fontSize = '12px';
+                downloadBtn.style.padding = '5px 10px';
+                downloadBtn.onclick = () => downloadImage(canvas, name);
+                card.appendChild(downloadBtn);
+
+                grid.appendChild(card);
+            });
+        }
+
+        function downloadImage(canvas, name) {
+            const link = document.createElement('a');
+            link.download = `${name}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Auto-generate on load
+        window.onload = generateAllImages;
+    </script>
+</body>
+
+</html>
